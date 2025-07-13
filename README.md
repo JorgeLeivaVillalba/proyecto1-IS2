@@ -1,11 +1,27 @@
 # Proyecto 1
 
+## ActiveMQ en Docker
+
+```sh
+docker run -d --name artemis -e ARTEMIS_USER=admin -e ARTEMIS_PASSWORD=admin -p 61616:61616 -p 8161:8161 apache/activemq-artemis
+```
+
+## Instalar dependencias
+
+```sh
+mvn clean install
+```
+
 **Forma de entrega:**  
 Subir al Canvas el link al repositorio GitHub.
+
+---
 
 ## Objetivo
 
 Simular las interconexiones del sistema de transferencias electrónicas SIPAP, mediante timer y colas de mensajes.
+
+---
 
 ## Requerimientos
 
@@ -29,15 +45,17 @@ Simular las interconexiones del sistema de transferencias electrónicas SIPAP, m
 - Procesar la petición enviando el mensaje JSON a una cola ActiveMQ con nombre constante.  
   El nombre de la cola debe ser `<apellidoAlumno-ITAU-IN>`.
 
-  Ejemplo: "morales-ITAU-IN"
+  Ejemplo: `morales-ITAU-IN`
 
-  Los nombres de las colas deben terminar con el sufijo "-IN" para indicar que es una cola de entrada de cada banco para las transacciones pendientes.
+  Los nombres de las colas deben terminar con el sufijo `-IN` para indicar que es una cola de entrada de cada banco para las transacciones pendientes.
 
 - Programar un consumidor Bean de la cola MQ para cada banco, que simule procesamiento de la transacción.
 
   Se debe imprimir el JSON recibido.
 
 **OBS:** se debe simular al menos 2 bancos.
+
+---
 
 ## Ejemplo
 
